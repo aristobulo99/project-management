@@ -1,29 +1,17 @@
-package com.project_management.project_management.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+package com.project_management.project_management.model.DTOs;
 
 import java.util.Set;
 
-@Entity
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String email;
     private String password;
+    private Set<RolesDTO> roles;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "rol_id")
-    )
-    private Set<Role> roles;
+    public UserDTO() {
+    }
 
     public Long getId() {
         return id;
@@ -57,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RolesDTO> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RolesDTO> roles) {
         this.roles = roles;
     }
 }
