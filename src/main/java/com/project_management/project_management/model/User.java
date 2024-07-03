@@ -25,6 +25,9 @@ public class User {
     )
     private Set<Role> roles;
 
+    @ManyToMany(mappedBy = "user")
+    private Set<Project> project;
+
     public Long getId() {
         return id;
     }
@@ -63,5 +66,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Project> getProject() {
+        return project;
+    }
+
+    public void setProject(Set<Project> project) {
+        this.project = project;
     }
 }
