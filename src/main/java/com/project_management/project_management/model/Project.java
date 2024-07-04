@@ -1,11 +1,13 @@
 package com.project_management.project_management.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.Set;
 
+@Entity
 public class Project {
 
     @Id
@@ -17,11 +19,11 @@ public class Project {
     private Date startDate;
     private Date endingDate;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "proj_user",
-            joinColumns = @JoinColumn(name = "proj_id"),
+            name = "project_user",
+            joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> user;

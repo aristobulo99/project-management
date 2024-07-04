@@ -9,6 +9,7 @@ public class UserDTO {
     private String email;
     private String password;
     private Set<RolesDTO> roles;
+    private Set<ProjectDTO> project;
 
     public UserDTO() {
     }
@@ -51,5 +52,13 @@ public class UserDTO {
 
     public void setRoles(Set<RolesDTO> roles) {
         this.roles = roles;
+    }
+
+    public Set<ProjectDTO> getProject() {
+        return project;
+    }
+
+    public void setProject(Set<ProjectDTO> project) {
+        this.project = project;
     }
 }

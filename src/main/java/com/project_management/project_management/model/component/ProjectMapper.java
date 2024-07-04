@@ -5,13 +5,17 @@ import com.project_management.project_management.model.DTOs.UserDTO;
 import com.project_management.project_management.model.Project;
 import com.project_management.project_management.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 public class ProjectMapper {
 
     @Autowired
+    @Lazy
     private UserMapper userMapper;
 
     public ProjectDTO toProjectDTO(Project project){
@@ -21,12 +25,12 @@ public class ProjectMapper {
         projectDTO.setDescription(project.getDescription());
         projectDTO.setStartDate(project.getStartDate());
         projectDTO.setEndingDate(project.getEndingDate());
-        Set<UserDTO> userDTOS = project
-                .getUser()
-                .stream()
-                .map(userMapper::toUserDTO)
-                .collect(Collectors.toSet());
-        projectDTO.setUser(userDTOS);
+//        Set<UserDTO> userDTOS = project
+//                .getUser()
+//                .stream()
+//                .map(userMapper::toUserDTO)
+//                .collect(Collectors.toSet());
+//        projectDTO.setUser(userDTOS);
         return projectDTO;
     }
 
@@ -37,12 +41,12 @@ public class ProjectMapper {
         project.setDescription(projectDTO.getDescription());
         project.setStartDate(projectDTO.getStartDate());
         project.setEndingDate(projectDTO.getEndingDate());
-        Set<User> users = projectDTO
-                .getUser()
-                .stream()
-                .map(userMapper::toUser)
-                .collect(Collectors.toSet());
-        project.setUser(users);
+//        Set<User> users = projectDTO
+//                .getUser()
+//                .stream()
+//                .map(userMapper::toUser)
+//                .collect(Collectors.toSet());
+//        project.setUser(users);
         return project;
     }
 }

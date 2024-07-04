@@ -12,7 +12,7 @@ public class ProjectDTO {
     private String description;
     private Date startDate;
     private Date endingDate;
-    private Set<UserDTO> user;
+//    private Set<UserDTO> user;
 
     public Long getId() {
         return id;
@@ -54,11 +54,11 @@ public class ProjectDTO {
         this.endingDate = endingDate;
     }
 
-    public Set<UserDTO> getUser() {
-        return user;
-    }
-
-    public void setUser(Set<UserDTO> user) {
-        this.user = user;
-    }
+//    public Set<UserDTO> getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(Set<UserDTO> user) {
+//        this.user = user;
+//    }
 }

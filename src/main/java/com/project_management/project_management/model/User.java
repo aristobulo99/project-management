@@ -1,5 +1,6 @@
 package com.project_management.project_management.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -25,7 +26,13 @@ public class User {
     )
     private Set<Role> roles;
 
-    @ManyToMany(mappedBy = "user")
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "project_user",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
     private Set<Project> project;
 
     public Long getId() {
